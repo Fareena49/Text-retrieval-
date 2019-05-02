@@ -1,3 +1,8 @@
+
+1. Take the Shakespeare's collection of plays as the corpus and query the collection based on the combination of multiple keywords.
+•	Use Linear Search or Brute Force or Grep Command
+
+
 import nltk
 from os import listdir
 from os.path import isfile
@@ -41,6 +46,10 @@ if __name__ == '__main__':
 
 
 --------------------------------------------------------------------------------------------------------------------------------
+2. Take the Shakespeare's collection of plays as the corpus and query the collection based on the combination of multiple keywords.
+•	Term-Document Incidence Matrix
+
+
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from os import listdir
@@ -60,6 +69,11 @@ print(df)
 
 
 -------------------------------------------------------------------------------------------------------------------------------
+3. Take the Shakespeare's collection of plays as the corpus and query the collection based on the combination of multiple keywords.
+•	Inverted Indexes
+o	Using Arrays
+o	Using Linked List as postings list
+
 
 inverted_dict = {
     
@@ -133,6 +147,53 @@ if __name__ == '__main__':
     print(inverted_dict["SCENE"])
     print(inverted_dict["Julius"])
 --------------------------------------------------------------------------------------------------------------------------------------
+4)4. Take the Shakespeare’s collection of plays as the corpus and perform
+•	Tokenization
+•	Capitalization/case-folding
+•	Stemming
+ 
+
 import nltk
 
 from nltk.corpus import stopwords
+
+def search_pattern():
+    
+    file_content = open("D:/corpus/play1.txt").read()
+    
+    word_punct_tokenizer = nltk.tokenize.WordPunctTokenizer()
+    
+    # TOKENIZATION
+    token_words = word_punct_tokenizer.tokenize(file_content)
+    
+    copy_token_words = token_words
+    
+    for token in token_words :
+        
+        if token in stopwords.words('english'):
+            
+            copy_token_words.remove(token)
+            
+    #print(copy_token_words)
+    
+    
+    # CAPITALIZATION/CASE FOLDING
+   
+    
+    
+    
+    #STEMMING
+    
+    stem = nltk.stem.PorterStemmer()
+    
+    copy_token_words = [stem.stem(word) for word in copy_token_words]
+    #print(copy_token_words)
+    
+    copy_token_words = [word.capitalize() for word in copy_token_words]
+    
+    print(copy_token_words)
+            
+
+if __name__ == '__main__':
+    
+    search_pattern()
